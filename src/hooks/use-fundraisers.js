@@ -4,7 +4,6 @@ import getFundraisers from '../api/get-fundraisers';
 
 export default function useFundraisers(){
     const [fundraisers, setFundraisers] = useState([]);
-    const [fundraiser, setFundraiser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
     useEffect(() => {
@@ -16,7 +15,8 @@ export default function useFundraisers(){
             setError(error);
             setIsLoading(false);
         })
-    })
+    },[])
+
     return {fundraisers, isLoading, error};
 
 }   

@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react';
 import getFundraiserById from '../api/get-fundraiser-by-id';
 
-export default function useOneFundraiser(id){
+export default function useOneUser(id){
     const [fundraiser, setFundraiser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState();
+    const [fundraiserisLoading, setIsLoading] = useState(true);
+    const [fundraiserError, setError] = useState();
     useEffect(() =>{
         getFundraiserById(id)
         .then((fundraiser) => {
@@ -14,7 +14,7 @@ export default function useOneFundraiser(id){
             setError(error);
             setIsLoading(false);
         })
-    })
+    },[id])
 
-    return {fundraiser, isLoading, error}
+    return {fundraiser, fundraiserisLoading, fundraiserError}
 }
