@@ -15,6 +15,12 @@ async function postPledge(fundraiserId, amount, comment, anonymous){
         }),
         //prevent we can send any datatype to server side
     });
+
+    if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.detail || "Error posting pledge");
+    }
+    return await response.json();
 }
 
 export default postPledge;

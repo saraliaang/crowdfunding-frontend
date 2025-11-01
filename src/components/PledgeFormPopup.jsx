@@ -11,14 +11,12 @@ export default function PledgeFormPopup({  onSubmit }) {
     function handleChange(event) {
         setPledge(prevPledge => {
             const updated = { ...prevPledge,[event.target.name]: event.target.value};
-            console.log(updated);
             return updated;
         })
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(pledge);
         onSubmit(pledge);
         setShow(false);
     }

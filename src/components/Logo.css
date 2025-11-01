@@ -1,0 +1,22 @@
+.time-core {
+    animation: corePulse 4s ease-in-out infinite;
+    opacity: .9;
+}
+
+@keyframes corePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: .9;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+.pastport-logo {
+    display: block;
+}

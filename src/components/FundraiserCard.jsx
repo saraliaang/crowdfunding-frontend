@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom';
 import "./FundraiserCard.css";
+import UpdateFundraiserButton from "./UpdateFundraiserButton";
+
 
 function FundraiserCard(props){
     const {fundraiserData} = props;
@@ -10,6 +12,7 @@ function FundraiserCard(props){
                 <img src={fundraiserData.img}/>
                 <h3>{fundraiserData.title}</h3>
             </Link>
+            <UpdateFundraiserButton fundraiser={fundraiserData}/>
         </div>
     )
 }
