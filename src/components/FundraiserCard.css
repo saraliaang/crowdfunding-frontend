@@ -1,11 +1,106 @@
+/* Image section */
 .fundraiser-card {
-    width: 100%;
-    border: 1px solid black;
-    box-shadow: 0px 0px 5px gray;
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    padding: 1rem;
+
+    /* glass panel */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px) saturate(120%);
+
+    /* neon border */
+    border: 1.5px solid rgba(var(--accent-rgb), 0.6);
+    /* var(--accent) softened */
+
+    transition: .25s ease;
+    cursor: pointer;
+
+    box-shadow:
+        0 0 10px rgba(110, 69, 226, 0.35),
+        inset 0 0 12px rgba(110, 69, 226, 0.20);
+
+    text-align: center;
 }
 
-.fundraiser-card img {
+/* === Hover Lift + Amplify Glow === */
+.fundraiser-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(110, 69, 226, 0.8);
+
+    box-shadow:
+        0 0 16px rgba(110, 69, 226, 0.6),
+        inset 0 0 18px rgba(110, 69, 226, 0.32);
+}
+
+.fundraiser-card a {
+    text-decoration: none;
+    color: inherit;
+    /* use card text color, not link blue */
+}
+
+
+
+.card-img-wrap img {
     width: 100%;
-    height: 300px;
+    height: 160px;
+    border-radius: 10px;
     object-fit: cover;
+    filter: brightness(0.92) contrast(1.05);
+    transition: .25s ease;
+}
+
+
+
+.fundraiser-card:hover .card-img-wrap img {
+    filter: brightness(1) contrast(1.1);
+}
+
+/* Title */
+.card-title {
+    font-family: var(--font-lore);
+    margin-top: 1.9rem;
+    font-size: 1.15rem;
+    color: var(--hightlight);
+    text-transform: uppercase;
+    text-shadow:
+        0 0 1px rgba(200, 255, 77, 0.45),
+        0 0 4px rgba(200, 255, 77, 0.7),
+        0 0 6px rgba(200, 255, 77, 0.25);
+    letter-spacing: 0.5px;
+
+}
+
+/* Money text */
+.card-stats {
+    margin-top: .4rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: .92rem;
+    color: var(--primary);
+}
+
+/* Buttons */
+.edit-btn {
+    width: 100%;
+    margin-top: .8rem;
+    padding: .6rem;
+    border-radius: 9px;
+    font-family: var(--font-display);
+    border: 1px solid rgba(200, 255, 77, 0.20);
+    background: rgba(200, 255, 77, 0.10);
+    color: var(--primary);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.edit-btn:hover {
+    background: var(--hightlight);
+    color: var(--background);
+}
+
+.edit-btn {
+    background: rgba(110, 69, 226, 0.12);
+    border-color: rgba(110, 69, 226, 0.25);
 }

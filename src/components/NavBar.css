@@ -1,6 +1,13 @@
 .nav {
     position: relative;
     padding: var(--space-3);
+
+    display: flex;
+    justify-content: space-between;
+    /* logo left, links right */
+    align-items: center;
+    /* vertically center items */
+    padding: 1rem;
 }
 
 /* Mobile-first nav button */
@@ -12,7 +19,7 @@
     color: var(--primary);
     font-family: var(--font-display);
     font-weight: 600;
-    border-radius: 12px;
+    border-radius: 10px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -39,11 +46,12 @@
 /* Hover / Active feedback */
 
 .nav-panel-btn:hover {
-    box-shadow:
-        0 0 18px rgba(110, 69, 226, 0.95),
-        inset 0 0 14px rgba(255, 255, 255, 0.25);
+
     transform: translateY(-2px);
-    background:var(--accent);
+    background: var(--hightlight);
+    color: var(--accent);
+    box-shadow: 0 0 15px rgba(200, 255, 77, .5);
+    transform: translateY(-3px);
 }
 
 .nav-panel-btn:active {
@@ -58,13 +66,13 @@
     flex-direction: column;
     width: 100%;
     background-color: var(--primary);
-    left:0;
+    left: 0;
 }
 
 .nav-links li {
     list-style: none;
     width: 100%;
-    padding:var(--space-2);
+    padding: var(--space-2);
     color: var(--secondary);
 
 }
@@ -81,7 +89,7 @@
     /* centers vertically (column) */
     align-items: center;
     text-align: center;
-    
+
     /* centers horizontally */
     background: rgba(61, 8, 20, 0.35);
     /* your background but glassy */
@@ -89,15 +97,15 @@
     /* highlight tint */
     border-radius: 12px;
     box-shadow:
-    inset 0 0 18px rgba(200, 255, 77, 0.18),
-    /* green glow */
-    inset 0 0 8px rgba(110, 69, 226, 0.25),
-    /* purple glow */
-    inset 0 0 2px rgba(255, 255, 255, 0.6),
-    /* crisp highlight edge */
-    0 0 10px rgba(110, 69, 226, 0.6),
-    /* outer glow */
-    0 0 25px rgba(200, 255, 77, 0.2);
+        inset 0 0 18px rgba(200, 255, 77, 0.18),
+        /* green glow */
+        inset 0 0 8px rgba(110, 69, 226, 0.25),
+        /* purple glow */
+        inset 0 0 2px rgba(255, 255, 255, 0.6),
+        /* crisp highlight edge */
+        0 0 10px rgba(110, 69, 226, 0.6),
+        /* outer glow */
+        0 0 25px rgba(200, 255, 77, 0.2);
     /* soft neon bleed */
     z-index: 999;
 }
@@ -108,7 +116,7 @@
         inset 0 0 10px rgba(150, 161, 126, 0.3),
         inset 0 0 4px rgba(110, 69, 226, .4);
     background: rgba(255, 255, 255, .09);
-    
+
 }
 
 .nav-links li:hover a {
@@ -136,9 +144,26 @@
     }
 
     .nav-links {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
-        gap: var(--space-4);
+        gap: var(--space-6);
         position: static;
+        /* remove absolute positioning */
+        justify-content: flex-end;
+        align-items: center;
+        background: none;
+        border: none;
+        box-shadow: none;
+        width: auto;
+    }
+
+    .nav-links a:hover {
+        color: var(--hightlight);
+        text-shadow: 0 0 3px rgba(200, 255, 77, .4);
+    }
+
+    .nav-links li {
+        width: auto;
+        padding: 0;
     }
 }

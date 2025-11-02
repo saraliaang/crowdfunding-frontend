@@ -1,36 +1,36 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import postFundraiser from '../api/post-fundraiser';
 
-function FundraiserForm(){
+function FundraiserForm() {
 
     const navigate = useNavigate();
     const [fundraiser, setFundraiser] = useState({
-        title:'',
-        description:'',
-        destination_year:null,
-        image:null,
-        is_open:false,
-        era:null,
-        year:null
+        title: '',
+        description: '',
+        destination_year: null,
+        image: null,
+        is_open: false,
+        era: null,
+        year: null
     })
 
     const handleChange = (event) => {
-        const {id, type, value, checked, name} = event.target;
+        const { id, type, value, checked, name } = event.target;
         let newValue = value;
-        if (type === 'file'){
+        if (type === 'file') {
             newValue = event.target.files[0];
         }
 
-        if (id === 'is_open'){
+        if (id === 'is_open') {
             newValue = checked;
         }
 
 
         setFundraiser(prevFundraiser => {
             const updated = {
-            ...prevFundraiser,
-            [id||name]:newValue,
+                ...prevFundraiser,
+                [id || name]: newValue,
             };
             const year = Number(updated.year);
             const era = updated.era;
@@ -39,48 +39,86 @@ function FundraiserForm(){
             }
             return updated;
         })
-        
+
     }
     //(prevFundraiser) => {...}: prevFundraiser is a callback form that gets the current state from React
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(fundraiser.title && fundraiser.description && fundraiser.destination_year && fundraiser.image && fundraiser.is_open){
-            postFundraiser(fundraiser.title,fundraiser.description, fundraiser.destination_year,fundraiser.image,fundraiser.is_open)
-            .then((response) => {
-                navigate('/');
-            })
+        if (fundraiser.title && fundraiser.description && fundraiser.destination_year && fundraiser.image && fundraiser.is_open) {
+            postFundraiser(fundraiser.title, fundraiser.description, fundraiser.destination_year, fundraiser.image, fundraiser.is_open)
+                .then((response) => {
+                    navigate('/');
+                })
         }
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Create a fundraiser</h2>
-            <div>
-                <label htmlFor="title">Title:</label>
-                <input type="text" id='title' placeholder='Title' onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="description">Description:</label>
-                <input type="textarea" id='description' placeholder='Description' onChange={handleChange} />
-            </div>
-            <div>
-                <input type="radio" value='BC' name='era' onChange={handleChange}/>
-                <label htmlFor="era">BC</label>
-                <input type="radio" value='AC' name='era' onChange={handleChange}/> 
-                <label htmlFor="era">AC</label>
-                <input type="number" id='year' onChange={handleChange}/>
-            </div>
-            <div>
-                <label htmlFor="image">Image URL:</label>
-                <input type="url"  id='image' placeholder='Enter image URL' onChange={handleChange}/>
-            </div>
-            <div>
-                <label htmlFor="checkbox">Is this fundraiser open for donation? </label>
-                <input type="checkbox" id='is_open' onChange={handleChange}/>
-            </div>
-            <button type="submit">Create fundraiser</button>
+        <div className="auth-container">
+            <form className="auth-form" onSubmit={handleSubmit}>
+                <h2 className="auth-title">Create a Time Voyage</h2>
 
-        </form>
-    )
+                <div className="auth-group">
+                    <label htmlFor="title">Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Mission Title"
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="auth-group">
+                    <label htmlFor="description">Description</label>
+                    <textarea
+                        id="description"
+                        placeholder="What moment do you want to visit?"
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="auth-group">
+                    <label>Era & Year</label>
+
+                    <div style={{ display: "flex", gap: "1rem", marginBottom: "0.4rem" }}>
+                        <label>
+                            <input type="radio" value="BC" name="era" onChange={handleChange} /> BC
+                        </label>
+                        <label>
+                            <input type="radio" value="AC" name="era" onChange={handleChange} /> AD
+                        </label>
+                    </div>
+
+                    <input
+                        type="number"
+                        id="year"
+                        placeholder="e.g. 320 or 1922"
+                        onChange={handleChange}
+                    />
+
+                    <p style={{ fontSize: "0.8rem", opacity: 0.8, marginTop: "6px" }}>
+                        1 year = $10,000 travel cost (auto-calculated)
+                    </p>
+                </div>
+
+                <div className="auth-group">
+                    <label htmlFor="image">Destination Image URL</label>
+                    <input
+                        type="url"
+                        id="image"
+                        placeholder="https://"
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="auth-group" style={{ flexDirection: "row", gap: "8px", alignItems: "center" }}>
+                    <label>Open for pledges?</label>
+                    <input type="checkbox" id="is_open" onChange={handleChange} />
+                </div>
+
+                <button type="submit" className="auth-btn">Create Voyage</button>
+            </form>
+        </div>
+    );
+
 }
 export default FundraiserForm;

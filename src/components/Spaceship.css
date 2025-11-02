@@ -1,0 +1,72 @@
+.ufo-balanced-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ufo-balanced {
+    filter: drop-shadow(0 12px 18px rgba(var(--accent-rgb), .36)) drop-shadow(0 0 38px rgba(200, 255, 77, .2));
+    animation: saucerFloat 7s ease-in-out infinite;
+
+}
+
+/* Engine pulse */
+.ufo-balanced-engine {
+    animation: balancedPulse 4.2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+/* Float */
+
+@keyframes saucerFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    39% {
+        transform: translateY(-6px);
+    }
+}
+
+
+
+/* ENGINE BREATH */
+@keyframes balancedPulse {
+
+    0%,
+    100% {
+        transform: scale(1.15);
+        opacity: .85;
+    }
+
+    50% {
+        transform: scale(1.28);
+        opacity: 1;
+    }
+}
+
+/* Ground shadow */
+.ufo-balanced-shadow {
+    width: 150px;
+    height: 7px;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.45), transparent);
+    margin-top: 6px;
+    opacity: .7;
+    animation: balancedShadowPulse 7s ease-in-out infinite;
+}
+
+@keyframes balancedShadowPulse {
+
+    0%,
+    100% {
+        transform: scaleX(1);
+        opacity: .6;
+    }
+
+    50% {
+        transform: scaleX(1.07);
+        opacity: .82;
+    }
+}

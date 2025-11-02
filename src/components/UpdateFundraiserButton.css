@@ -1,0 +1,9 @@
+.edit-btn:hover {
+    background: var(--hightlight);
+    color: var(--accent);
+}
+
+.edit-btn {
+    background: rgba(110, 69, 226, 0.12);
+    border-color: rgba(110, 69, 226, 0.25);
+}

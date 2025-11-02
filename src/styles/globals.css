@@ -7,16 +7,23 @@
 :root {
       /* COLORS */
     --background:#3d0814;
+    --background-rgb:61, 8, 20;
     --primary:#e7f9a9;
+    --primary-rgb:231, 249, 169;
     --secondary:#8e8c7f;
+    --secondary-text:142, 140, 127;
     --accent:#6e45e2;
+    --accent-rgb:110, 69, 226;
     --text-dark:#2f2f2f;
-    --secondaty-text:#eef8eb;
-    --highlight:#c8ff4d;
+    --text-dark-rgb:47, 47, 47;
+    --secondary-text:#eef8eb;
+    --secondary-text-rgb:238, 248, 235;
+    --highlight: #c8ff4d;
+    --highlight-rgb:200, 255, 77;
 
       /* GRADIENTS */
     --text-futuristic-1:linear-gradient(90deg, #8c52ff, #ff914d);
-    --text-futuristic-2:radial-gradient(circle at 50% 50%, #7b2d9f, #fdd823);
+    --text-futuristic-2:radial-gradient(circle at 10% 10%, #7b2d9f, #fdd823);
 
       /* TYPOGRAPHY */
     --font-display: "League Spartan", sans-serif;
@@ -67,6 +74,8 @@ body {
     background: var(--background);
     color: var(--secondary-text);
     line-height: 1.6;
+    overflow-x: hidden;
+
 }
 
 h1, h2, h3 {

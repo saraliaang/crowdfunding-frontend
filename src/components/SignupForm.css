@@ -1,0 +1,101 @@
+/* ==== AUTH PAGE WRAPPER ==== */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4);
+    color: var(--primary);
+    backdrop-filter: blur(6px);
+}
+
+/* ==== FORM CARD ==== */
+.auth-form {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(61, 8, 20, 0.8);
+    border-radius: 14px;
+    padding: var(--space-5);
+    border: 1px solid rgba(200, 255, 77, .25);
+    box-shadow:
+        inset 0 0 18px rgba(200, 255, 77, .15),
+        inset 0 0 10px rgba(110, 69, 226, .25),
+        0 0 30px rgba(110, 69, 226, .4);
+    animation: fadeIn .4s ease;
+}
+
+/* Title */
+.auth-title {
+    font-family: var(--font-display);
+    text-align: center;
+    color: var(--hightlight);
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    margin-bottom: var(--space-4);
+    text-shadow: 0 0 8px rgba(200, 255, 77, .4);
+}
+
+/* Input groups */
+.auth-group {
+    margin-bottom: var(--space-3);
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-group label {
+    font-size: .9rem;
+    margin-bottom: 6px;
+    opacity: .85;
+}
+
+/* Inputs */
+.auth-group input {
+    padding: .7rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, .25);
+    border: 1px solid rgba(200, 255, 77, .25);
+    color: var(--primary);
+    font-family: var(--font-body);
+}
+
+.auth-group input:focus {
+    outline: none;
+    box-shadow: 0 0 12px rgba(200, 255, 77, .5);
+}
+
+/* Submit button */
+.auth-btn {
+    width: 100%;
+    padding: .8rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent);
+    color: var(--primary);
+    margin-top: var(--space-2);
+    transition: .2s;
+    box-shadow:
+        0 0 10px rgba(110, 69, 226, .6),
+        inset 0 0 6px rgba(255, 255, 255, .2);
+}
+
+.auth-btn:hover {
+    background: var(--hightlight);
+    color: var(--accent);
+    box-shadow: 0 0 12px rgba(200, 255, 77, .6);
+    transform: translateY(-2px);
+}
+
+/* fade animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

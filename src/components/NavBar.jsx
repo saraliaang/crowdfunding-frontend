@@ -40,18 +40,18 @@ function NavBar() {
                 )}
 
                 <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
-                    <li>
-                        <Link to="/">Home</Link>
+                    <li >
+                        <Link to="/" >_Home</Link>
                     </li>
                     {auth.token ? (
                         <li><Link to='/' onClick={handleLogout}>Logout</Link></li>
                     ) : (
                         <>
-                            <li><Link to='/login'>Login</Link></li>
-                            <li><Link to='/signup'>Signup</Link></li>
+                            <li><Link to='/login'>_Login</Link></li>
+                            <li><Link to='/signup'>_Signup</Link></li>
                         </>
                     )}
-                    <li><Link to='/createfundraiser'>Create a fundraising</Link></li>
+                    <li><Link to='/createfundraiser'>_Create a fundraising</Link></li>
                 </ul>
             </header>
             <Outlet />
@@ -60,3 +60,6 @@ function NavBar() {
 }
 
 export default NavBar;
+
+
+/*how to setMenuClosed afte every Link*/

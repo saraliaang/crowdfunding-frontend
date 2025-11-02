@@ -1,6 +1,229 @@
-#fundraiser-list {
+#landing {
+    position: relative;
+    width: 100%;
+    min-height: 30vh;
+    background: transparent;
+}
+
+/* Haze layer */
+.landing-haze {
+    position: absolute;
+    animation: hazeRotate 60s linear infinite;
+    filter: blur(48px);
+    z-index: 0;
+    background:
+        radial-gradient(circle at 18% 30%, rgba(var(--highlight-rgb), .2), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(var(--accent-rgb), .2), transparent 55%),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .05), transparent 60%);
+
+    filter: blur(48px);
+    animation: hazeRotate 20s linear infinite;
+    transform-origin: center;
+    opacity: .85;
+    inset: -20vh;
+}
+
+
+
+@keyframes hazeRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.landing-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    animation: starsFloat 30s linear infinite;
+
+    /* Star map — brighter, bigger, your highlight tone */
+    background:
+        radial-gradient(4px 4px at 7% 18%, rgba(var(--highlight-rgb), .55), transparent),
+        radial-gradient(10px 10px at 82% 26%, rgba(var(--highlight-rgb), .45), transparent),
+        radial-gradient(3px 3px at 60% 44%, rgba(var(--highlight-rgb), .45), transparent),
+        radial-gradient(2px 2px at 48% 27%, rgba(var(--highlight-rgb), .55), transparent),
+        radial-gradient(2.3px 2.3px at 8% 58%, rgba(var(--highlight-rgb), .47), transparent),
+        radial-gradient(2px 2px at 72% 34%, rgba(var(--highlight-rgb), .52), transparent);
+
+    animation: starsFloat 35s linear infinite;
+    opacity: .85;
+    filter: drop-shadow(0 0 4px rgba(var(--highlight-rgb), .4));
+}
+
+
+/* Subtle drift (gives parallax feel) */
+@keyframes starsFloat {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-6%) translateY(-2%);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+
+/* Star twinkle — calm breathing, not blinking */
+.landing-stars::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(5px 5px at 15% 25%, rgba(var(--highlight-rgb), 0.3), transparent),
+        radial-gradient(6px 6px at 80% 30%, rgba(var(--highlight-rgb), 0.35), transparent),
+        radial-gradient(4px 4px at 50% 90%, rgba(var(--highlight-rgb), 0.3), transparent),
+        radial-gradient(10px 10px 60% 60%, rgba(var(--highlight-rgb), 0.3), transparent);
+    animation: twinkle 6s ease-in-out infinite alternate;
+    opacity: 0.95;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* Twinkle animation — slow, organic */
+@keyframes twinkle {
+    0% {
+        opacity: .10;
+        filter: blur(0.6px);
+    }
+
+    50% {
+        opacity: .55;
+        filter: blur(0.8px);
+    }
+
+    100% {
+        opacity: .18;
+        filter: blur(0.6px);
+    }
+}
+
+.landing-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.landing-content {
+    padding-top: 8vh;
+    /* move ship down or up */
+    position: relative;
+    z-index: 5;
+    /* above background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.landing-tagline {
+    text-align: center;
+    max-width: 70vw;
+    margin-inline: auto;
+}
+
+.landing-tagline p {
+    font-family: var(--font-lore);
+    font-size: clamp(1rem, 2vw, 1.8rem);
+    color: var(--secondaty-text);
+    opacity: 0.9;
+    line-height: 1.35;
+    letter-spacing: 0.6px;
+}
+
+/* Just a whisper of glow — not loud */
+.landing-tagline .line1,
+.landing-tagline .line2 {
+    text-shadow:
+        0 0 4px rgba(200, 255, 77, 0.18),
+        0 0 10px rgba(110, 69, 226, 0.15);
+}
+
+/* Soft fade-in hero feeling */
+.landing-tagline {
+    animation: taglineFade 1.8s ease forwards;
+    opacity: 0;
+}
+
+
+
+
+
+
+/* Section titles */
+.fundraiser-section {
+    padding: 7vh 4vw;
+    background: var(--background);
+}
+
+.fundraiser-title {
+    text-align: center;
+    font-family: var(--font-lore);
+    font-size: 2rem;
+    background-image: var(--text-futuristic-2);
+    -webkit-background-clip: text;
+    color: transparent;
+
+    margin-bottom: 3vh;
+    opacity: .9;
+    letter-spacing: .03em;
+}
+
+/* Grid */
+.fundraiser-grid {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    column-gap: 10px;
-    row-gap: 10px;
+    gap: 2rem;
+    justify-content: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (min-width: 900px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@keyframes taglineFade {
+    0% {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Start your own pastport button */
+
+.hero-cta {
+    display: inline-block;
+    margin-top: 1.6rem;
+    padding: 0.8rem 2.2rem;
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    border: 1.5px solid var(--hightlight);
+    color: var(--hightlight);
+    border-radius: 12px;
+    background: rgba(200, 255, 77, 0.06);
+    backdrop-filter: blur(10px);
+    transition: .22s ease;
+    text-decoration: none;
+}
+
+.hero-cta:hover {
+    background: var(--hightlight);
+    color: var(--accent);
+    box-shadow: 2px 2px 15px rgba(200, 255, 77, .5);
+    transform: translateY(-3px);
 }

@@ -1,0 +1,58 @@
+.terminal-screen {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--primary);
+    font-family: var(--font-display);
+    padding: 2rem;
+}
+
+.terminal-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--hightlight);
+    text-shadow:
+        0 0 6px rgba(200, 255, 77, 0.6),
+        0 0 18px rgba(110, 69, 226, 0.4);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.terminal-sub {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    margin-bottom: 1rem;
+}
+
+.terminal-code {
+    color: var(--accent);
+    font-weight: bold;
+    text-shadow: 0 0 6px rgba(110, 69, 226, 0.5);
+}
+
+.terminal-text {
+    max-width: 600px;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.terminal-btn {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    border: 1px solid var(--hightlight);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--hightlight);
+    transition: 0.2s;
+    backdrop-filter: blur(8px);
+}
+
+.terminal-btn:hover {
+    background: var(--hightlight);
+    color: var(--accent);
+    box-shadow: 0 0 12px rgba(200, 255, 77, 0.5);
+    transform: translateY(-3px);
+}

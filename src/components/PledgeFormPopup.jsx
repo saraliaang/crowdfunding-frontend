@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './PledgeFormPopup.css'
 
 export default function PledgeFormPopup({  onSubmit }) {
     const [show, setShow] = useState(false);
@@ -23,7 +24,7 @@ export default function PledgeFormPopup({  onSubmit }) {
 
     return (
         <>
-            <button onClick={() => setShow(true)}>Add Pledge</button>
+            <button  className="pledge-btn" onClick={() => setShow(true)}>Add Pledge</button>
             {show && (
                 <div className="overlay">
                     <div className="popup">
@@ -51,8 +52,8 @@ export default function PledgeFormPopup({  onSubmit }) {
                             <input type="radio" value='false' name='anonymous'onChange={handleChange}/>
 
                             <div style={{ marginTop: "10px" }}>
-                                <button type="submit">Submit</button>
-                                <button type="button" onClick={() => setShow(false)}>
+                                <button  className="submit-btn" type="submit">Submit</button>
+                                <button className="cancel-btn" type="button" onClick={() => setShow(false)}>
                                     Cancel
                                 </button>
                             </div>

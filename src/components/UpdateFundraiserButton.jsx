@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import './UpdateFundraiserButton.css'
 
 
 function UpdateFundraiserButton(props){
@@ -7,7 +8,7 @@ function UpdateFundraiserButton(props){
     return(
         <div>
             { window.localStorage.getItem("user_id") == fundraiser.owner  ? 
-            (<button onClick={() => navigate(`/fundraisers/${fundraiser.id}/update`)}>
+            (<button className="edit-btn" onClick={() => navigate(`/fundraisers/${fundraiser.id}/update`)}>
                 Edit Fundraiser
             </button>) : null }<br/>
         </div>

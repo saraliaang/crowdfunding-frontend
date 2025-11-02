@@ -4,6 +4,7 @@ import PledgeFormPopup from "../components/PledgeFormPopup";
 import postPledge from "../api/post-pledge";
 import UpdateFundraiserButton from "../components/UpdateFundraiserButton";
 import { useState, useEffect } from "react";
+import './FundraiserPage.css';
 
 
 
@@ -28,41 +29,62 @@ function FundraiserPage() {
     }
 
 
-    async function handleAddPledge(pledge){
-        if(pledge.amount&&pledge.comment&&pledge.anonymous!==undefined){
-            const newPledge = await postPledge(id, pledge.amount, pledge.comment, pledge.anonymous );
-            setLocalFundraiser(prev => ({...prev, pledges:[...prev.pledges,newPledge]}));
+    async function handleAddPledge(pledge) {
+        if (pledge.amount && pledge.comment && pledge.anonymous !== undefined) {
+            const newPledge = await postPledge(id, pledge.amount, pledge.comment, pledge.anonymous);
+            setLocalFundraiser(prev => ({ ...prev, pledges: [...prev.pledges, newPledge] }));
         }
     }
 
     return (
-        <div>
-            <h2>{localFundraiser.title}</h2>
-            <h3>About this fundraiser: {localFundraiser.description}</h3>
-            <h3>Target amount: {localFundraiser.target}</h3>
-            <h3>Status: { localFundraiser.is_open ? "open to pledge":"closed for pledge" }</h3>
-            <h3>    
-                Total Pledge Amount: 
-                {(localFundraiser.pledges).reduce((total, pledge) => total + (Number(pledge.amount)),0)}
-            </h3>
-            <PledgeFormPopup onSubmit={handleAddPledge} />
-            <UpdateFundraiserButton fundraiser={localFundraiser}/>
-            <img src={localFundraiser.image} alt="" />
-            <h3>Pledges:</h3>
-            <ul>
-                {localFundraiser.pledges.map((pledgeData, key) => {
-                    return (
-                        <li key={key}>
-                            {pledgeData.anonymous === true
-                                ? "👽 mysterious alien " 
-                                : pledgeData.supporter_username}
-                                donated {pledgeData.amount}:"{pledgeData.comment}" 
-                        </li>
-                    )
-                })}
+        <section className="fundraiser-page">
+            <div className="fundraiser-header">
+                <img className="fundraiser-banner" src={localFundraiser.image} alt={localFundraiser.title} />
+                <h1 className="fundraiser-title">{localFundraiser.title}</h1>
+                <p className="fundraiser-desc">{localFundraiser.description}</p>
+            </div>
+
+            <div className="fundraiser-stats">
+                <div className="stat">
+                    <span className="stat-label">Goal</span>
+                    <span className="stat-value">${localFundraiser.target.toLocaleString()}</span>
+                </div>
+                <div className="stat">
+                    <span className="stat-label">Raised</span>
+                    <span className="stat-value">
+                        $
+                        {(localFundraiser.pledges).reduce((t, p) => t + Number(p.amount), 0).toLocaleString()}
+                    </span>
+                </div>
+                <div className="stat">
+                    <span className="stat-label">Status</span>
+                    <span className={`stat-value ${localFundraiser.is_open ? "open" : "closed"}`}>
+                        {localFundraiser.is_open ? "OPEN" : "CLOSED"}
+                    </span>
+                </div>
+            </div>
+
+            <div className="fundraiser-actions">
+                <PledgeFormPopup onSubmit={handleAddPledge} />
+                <UpdateFundraiserButton fundraiser={localFundraiser} />
+            </div>
+
+            <h2 className="pledge-title">Backers</h2>
+
+            <ul className="pledge-list">
+                {localFundraiser.pledges.map((p, key) => (
+                    <li key={key} className="pledge-item">
+                        <span className="pledge-name">
+                            {p.anonymous ? "👽 Mysterious Voyager" : p.supporter_username}
+                        </span>
+                        <span className="pledge-amount">${p.amount}</span>
+                        <span className="pledge-comment">"{p.comment}"</span>
+                    </li>
+                ))}
             </ul>
-        </div>
+        </section>
     );
+
 }
 
 export default FundraiserPage;

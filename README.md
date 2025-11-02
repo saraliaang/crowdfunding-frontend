@@ -1,16 +1,49 @@
-# React + Vite
+# Crowdfunding Front End
+Sara Liang 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## ✨ Link to Deployed Project
+gleaming-heliotrope-72b662.netlify.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Planning:
+### 🕰 The PastPort Project
+**What if you can witness the building of the Great Pyrimid with your own eyes?** 
+What if you can say good bye to a loved one that you never got a chance to? Or walk in the streets in Paris when it was a movable feast, alongside with Hemingway and Fitzgerald?
 
-## React Compiler
+Fundraiser Purpose: Users pledge money to gain access to the time machine for a personal trip to the past 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Intended Audience
 
-## Expanding the ESLint configuration
+- **History Enthusiasts** – who want to witness key moments in history firsthand, from the signing of the Declaration of Independence to the invention of sliced bread.  
+- **Regret Fixers** – individuals seeking to right past wrongs, make different choices, or prevent themselves from sending that one embarrassing text.  
+- **Investors in Science & Adventure** – people who believe in pushing humanity beyond the limits of physics (and who also enjoy bragging about funding “faster-than-light” travel).  
+- **Thrill Seekers** – daredevils eager to experience warp-speed nausea and the risk of minor to severe temporal paradoxes.  
+- **Celebrity Time-Tourists** – *"I just want to take a selfie from 1923 and post it on intagram"*
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+-  User authentication (Signup / Login / Token)
+- Create fundraisers (“Time Voyages”)
+-  Pledge to fundraisers
+- Anonymous pledges
+- Edit own fundraisers only
+- Custom 404 page (“Timeline Not Found”)
+- Unauthorized page (“Temporal Security Protocol TS-403”)
+- Responsive UI
+- Fully deployed backend + frontend
+- only show edit fundraiser button when owner is loggin
+## ✨ Screenshots
+
+### Screenshots of the homepage
+![LandingPage1](img/LandingPage1.png)
+![LandingPage2](img/LandingPage2.png)
+![ResponsiveLandingPage](img/ResponsiveDesign.png)
+
+### A screenshot of the fundraiser creation page
+![CreateFundraiserForm](img/CreateFundraiserForm.png)
+### A screenshot of a fundraiser with pledges
+![FundraiserWithPledges](img/FundraiserWithPledges.png)
+### 404 pages
+
+![404NotFound](img/404.png)
+

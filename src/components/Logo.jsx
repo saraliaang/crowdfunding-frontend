@@ -1,7 +1,7 @@
 import "./Logo.css";
 
 
-export default function Logo({ size = 200 }) {
+export default function Logo({ size = 220 }) {
     return (
         <svg
             width={size}
