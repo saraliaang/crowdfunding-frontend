@@ -18,8 +18,12 @@ function FundraiserCard(props) {
                 <h3 className="card-title">{title}</h3>
 
                 <div className="card-stats">
-                    <span>${amount_raised}</span>
-                    <span>/ ${target}</span>
+                    <span>RAISED:</span>
+                    <span> ${amount_raised} / ${target}</span>
+                </div>
+                <div className="otherStates">
+                    <span>dot </span>
+                    
                 </div>
             </Link>
             <UpdateFundraiserButton fundraiser={fundraiserData} />

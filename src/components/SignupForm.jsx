@@ -2,9 +2,13 @@ import { useState } from 'react';
 import postSignup from '../api/post-signup';
 import { useNavigate } from 'react-router-dom';
 import './SignupForm.css';
+import { useAuth } from '../hooks/use-auth.js';
+
 
 function SignupForm() {
     const navigate = useNavigate();
+    const { setAuth } = useAuth();
+
     const [user, setUser] = useState({
         username: "",
         password: "",
@@ -22,6 +26,7 @@ function SignupForm() {
             postSignup(user.username, user.password)
                 .then((response) => {
                     window.localStorage.setItem('token', response.token);
+                    setAuth({ token: response.token });
                     navigate('/');
                 });
         }

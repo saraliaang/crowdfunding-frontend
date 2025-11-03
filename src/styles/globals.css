@@ -23,7 +23,7 @@
 
       /* GRADIENTS */
     --text-futuristic-1:linear-gradient(90deg, #8c52ff, #ff914d);
-    --text-futuristic-2:radial-gradient(circle at 10% 10%, #7b2d9f, #fdd823);
+    --text-futuristic-2:radial-gradient(circle at 15% 15%, #7b2d9f, #fdd823);
 
       /* TYPOGRAPHY */
     --font-display: "League Spartan", sans-serif;

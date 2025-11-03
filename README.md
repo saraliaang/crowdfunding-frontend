@@ -22,9 +22,9 @@ Fundraiser Purpose: Users pledge money to gain access to the time machine for a 
 
 ## ✨ Features
 
--  User authentication (Signup / Login / Token)
+- User authentication (Signup / Login / Token)
 - Create fundraisers (“Time Voyages”)
--  Pledge to fundraisers
+- Pledge to fundraisers
 - Anonymous pledges
 - Edit own fundraisers only
 - Custom 404 page (“Timeline Not Found”)
@@ -32,6 +32,10 @@ Fundraiser Purpose: Users pledge money to gain access to the time machine for a 
 - Responsive UI
 - Fully deployed backend + frontend
 - only show edit fundraiser button when owner is loggin
+- Pledge would update real time on page after user submit a pledge
+- Pledges on fundraiser Page would show supporter's name, but show "Mysterious Voyager" if supporter chose to stay anonymous.  
+
+
 ## ✨ Screenshots
 
 ### Screenshots of the homepage

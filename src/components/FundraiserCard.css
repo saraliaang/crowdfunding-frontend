@@ -2,23 +2,23 @@
 .fundraiser-card {
     position: relative;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 12px;
     padding: 1rem;
 
     /* glass panel */
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px) saturate(120%);
+    background: 
+    rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(22px) saturate(110%);
 
     /* neon border */
-    border: 1.5px solid rgba(var(--accent-rgb), 0.6);
-    /* var(--accent) softened */
+    border: 1.5px solid rgba(var(--accent-rgb), 0.7);
+    box-shadow:
+        0 0 10px rgba(81, 32, 216, 0.45),
+        inset 0 0 12px rgba(110, 69, 226, 0.20);
 
     transition: .25s ease;
     cursor: pointer;
 
-    box-shadow:
-        0 0 10px rgba(110, 69, 226, 0.35),
-        inset 0 0 12px rgba(110, 69, 226, 0.20);
 
     text-align: center;
 }
@@ -45,23 +45,23 @@
 .card-img-wrap img {
     width: 100%;
     height: 160px;
-    border-radius: 10px;
+    border-radius: 8px;
     object-fit: cover;
-    filter: brightness(0.92) contrast(1.05);
+    filter: brightness(0.92) contrast(1.06);
     transition: .25s ease;
 }
 
 
 
 .fundraiser-card:hover .card-img-wrap img {
-    filter: brightness(1) contrast(1.1);
+    filter: brightness(1) contrast(1.2);
 }
 
 /* Title */
 .card-title {
     font-family: var(--font-lore);
     margin-top: 1.9rem;
-    font-size: 1.15rem;
+    font-size: 1.13rem;
     color: var(--hightlight);
     text-transform: uppercase;
     text-shadow:
@@ -79,11 +79,15 @@
     justify-content: space-between;
     font-size: .92rem;
     color: var(--primary);
+    text-shadow:
+        0 0 1px rgba(200, 255, 77, 0.45),
+        0 0 4px rgba(200, 255, 77, 0.7),
+        0 0 6px rgba(200, 255, 77, 0.25);
 }
 
 /* Buttons */
 .edit-btn {
-    width: 100%;
+    width: 95%;
     margin-top: .8rem;
     padding: .6rem;
     border-radius: 9px;

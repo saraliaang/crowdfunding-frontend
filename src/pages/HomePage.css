@@ -5,6 +5,16 @@
     background: transparent;
 }
 
+#cosmic-field {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    /* behind content */
+    overflow: visible;
+    isolation: isolate;
+}
+
 /* Haze layer */
 .landing-haze {
     position: absolute;
@@ -14,13 +24,15 @@
     background:
         radial-gradient(circle at 18% 30%, rgba(var(--highlight-rgb), .2), transparent 45%),
         radial-gradient(circle at 80% 70%, rgba(var(--accent-rgb), .2), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .05), transparent 60%);
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, .1), transparent 60%);
 
-    filter: blur(48px);
+    filter: blur(28px);
     animation: hazeRotate 20s linear infinite;
     transform-origin: center;
-    opacity: .85;
+    transform: translateZ(0);
+    opacity: .70;
     inset: -20vh;
+    will-change: transform, opacity;
 }
 
 
@@ -40,19 +52,24 @@
     inset: 0;
     z-index: 0;
     animation: starsFloat 30s linear infinite;
-
+    
     /* Star map — brighter, bigger, your highlight tone */
     background:
-        radial-gradient(4px 4px at 7% 18%, rgba(var(--highlight-rgb), .55), transparent),
-        radial-gradient(10px 10px at 82% 26%, rgba(var(--highlight-rgb), .45), transparent),
-        radial-gradient(3px 3px at 60% 44%, rgba(var(--highlight-rgb), .45), transparent),
-        radial-gradient(2px 2px at 48% 27%, rgba(var(--highlight-rgb), .55), transparent),
-        radial-gradient(2.3px 2.3px at 8% 58%, rgba(var(--highlight-rgb), .47), transparent),
-        radial-gradient(2px 2px at 72% 34%, rgba(var(--highlight-rgb), .52), transparent);
-
+    radial-gradient(4px 4px at 20% 13%, rgba(var(--highlight-rgb), .55), transparent),
+    radial-gradient(8px 8px at 82% 26%, rgba(var(--highlight-rgb), .45), transparent),
+    radial-gradient(4px 4px at 95% 30%, rgba(var(--highlight-rgb), .45), transparent),
+    radial-gradient(2.9px 2.9px at 82% 85%, rgba(var(--highlight-rgb), .45), transparent),
+    radial-gradient(3px 3px at 48% 27%, rgba(var(--highlight-rgb), .55), transparent),
+    radial-gradient(3px 3px at 8% 58%, rgba(var(--highlight-rgb), .47), transparent),
+    radial-gradient(2px 2px at 18% 72%, rgba(var(--highlight-rgb), .52), transparent);
+    
     animation: starsFloat 35s linear infinite;
     opacity: .85;
     filter: drop-shadow(0 0 4px rgba(var(--highlight-rgb), .4));
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    pointer-events: none;
+    overflow: hidden;
 }
 
 
@@ -78,25 +95,25 @@
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(5px 5px at 15% 25%, rgba(var(--highlight-rgb), 0.3), transparent),
-        radial-gradient(6px 6px at 80% 30%, rgba(var(--highlight-rgb), 0.35), transparent),
-        radial-gradient(4px 4px at 50% 90%, rgba(var(--highlight-rgb), 0.3), transparent),
-        radial-gradient(10px 10px 60% 60%, rgba(var(--highlight-rgb), 0.3), transparent);
+        radial-gradient(5px 5px at 15% 15%, #f4f1f14d, transparent),
+        radial-gradient(5.7px 5.7px at 40% 30%, rgba(var(--highlight-rgb), 0.35), transparent),
+        radial-gradient(4px 4px at 10% 15%, rgba(var(--highlight-rgb), 0.3), transparent),
+        radial-gradient(10px 10px 55% 38%, rgba(var(--highlight-rgb), 0.3), transparent);
     animation: twinkle 6s ease-in-out infinite alternate;
-    opacity: 0.95;
+    opacity: 0.55;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 99;
 }
 
 /* Twinkle animation — slow, organic */
 @keyframes twinkle {
     0% {
         opacity: .10;
-        filter: blur(0.6px);
+        filter: blur(30px);
     }
 
     50% {
-        opacity: .55;
+        opacity: .65;
         filter: blur(0.8px);
     }
 
@@ -106,12 +123,6 @@
     }
 }
 
-.landing-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
 
 .landing-content {
     padding-top: 8vh;
@@ -136,18 +147,22 @@
 .landing-tagline p {
     font-family: var(--font-lore);
     font-size: clamp(1rem, 2vw, 1.8rem);
-    color: var(--secondaty-text);
+    color: var(--hightlight);
     opacity: 0.9;
     line-height: 1.35;
     letter-spacing: 0.6px;
+    position: relative;
+    z-index: 5;
+    /* above cosmic layer */
+
 }
 
 /* Just a whisper of glow — not loud */
 .landing-tagline .line1,
 .landing-tagline .line2 {
     text-shadow:
-        0 0 4px rgba(200, 255, 77, 0.18),
-        0 0 10px rgba(110, 69, 226, 0.15);
+        0 0 10px rgba(200, 255, 77, 0.4),
+        0 0 10px rgba(110, 69, 226, 0.3);
 }
 
 /* Soft fade-in hero feeling */
@@ -159,25 +174,23 @@
 
 
 
-
-
 /* Section titles */
 .fundraiser-section {
     padding: 7vh 4vw;
     background: var(--background);
 }
 
-.fundraiser-title {
+.fundraiser-section .fundraiser-title {
     text-align: center;
     font-family: var(--font-lore);
     font-size: 2rem;
-    background-image: var(--text-futuristic-2);
-    -webkit-background-clip: text;
-    color: transparent;
-
+    z-index: 10;
     margin-bottom: 3vh;
-    opacity: .9;
-    letter-spacing: .03em;
+    opacity: 1;
+    letter-spacing: .05em;
+    position: relative;
+    /* create stacking layer */
+
 }
 
 /* Grid */

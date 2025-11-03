@@ -32,7 +32,12 @@ function FundraiserPage() {
     async function handleAddPledge(pledge) {
         if (pledge.amount && pledge.comment && pledge.anonymous !== undefined) {
             const newPledge = await postPledge(id, pledge.amount, pledge.comment, pledge.anonymous);
-            setLocalFundraiser(prev => ({ ...prev, pledges: [...prev.pledges, newPledge] }));
+            setLocalFundraiser(prev => ({
+                ...prev,
+                amount_raised: Number(prev.amount_raised || 0) + Number(pledge.amount),
+                pledges: [...prev.pledges, newPledge]
+            }));
+
         }
     }
 
@@ -51,10 +56,7 @@ function FundraiserPage() {
                 </div>
                 <div className="stat">
                     <span className="stat-label">Raised</span>
-                    <span className="stat-value">
-                        $
-                        {(localFundraiser.pledges).reduce((t, p) => t + Number(p.amount), 0).toLocaleString()}
-                    </span>
+                    <span className="stat-value">${localFundraiser.amount_raised || 0}</span>
                 </div>
                 <div className="stat">
                     <span className="stat-label">Status</span>

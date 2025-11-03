@@ -33,9 +33,9 @@ export default function Logo({ size = 220 }) {
 
             {/* O Core */}
             <circle
-                cx="330"
-                cy="80"
-                r="33"
+                cx="320"
+                cy="70"
+                r="35"
                 fill="url(#pastport-core)"
                 className="time-core"
             />

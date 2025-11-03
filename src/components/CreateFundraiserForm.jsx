@@ -37,6 +37,7 @@ function FundraiserForm() {
             if (year && era) {
                 updated.destination_year = era === 'BC' ? year * -1 : year;
             }
+            console.log(updated)
             return updated;
         })
 
@@ -45,7 +46,7 @@ function FundraiserForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (fundraiser.title && fundraiser.description && fundraiser.destination_year && fundraiser.image && fundraiser.is_open) {
+        if (fundraiser.title && fundraiser.description && fundraiser.destination_year && fundraiser.image) {
             postFundraiser(fundraiser.title, fundraiser.description, fundraiser.destination_year, fundraiser.image, fundraiser.is_open)
                 .then((response) => {
                     navigate('/');

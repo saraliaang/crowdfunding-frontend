@@ -8,6 +8,8 @@
     align-items: center;
     /* vertically center items */
     padding: 1rem;
+    z-index: 9999;
+
 }
 
 /* Mobile-first nav button */

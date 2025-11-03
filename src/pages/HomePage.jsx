@@ -12,7 +12,7 @@ function HomePage() {
     return (
         <>
             <section id='landing'>
-                <div className="landing-bg">
+                <div id="cosmic-field ">
                     <div className="landing-haze"></div>
                     <div className="landing-stars"></div>
                 </div>
